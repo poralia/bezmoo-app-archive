@@ -1,0 +1,7 @@
+{
+  "name": "Bezmoo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

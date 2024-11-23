@@ -1,0 +1,22 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmitHandler()" *ngIf="login$ | async as login">
+  <ion-item class="ion-margin-bottom">
+    <ion-icon slot="start" name="mail-outline"></ion-icon>
+    <ion-input type="email" placeholder="Alamat Email" formControlName="usr"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-icon slot="start" name="key-outline"></ion-icon>
+    <ion-input type="password" placeholder="Password" formControlName="pwd" [clearInput]="false"></ion-input>
+  </ion-item>
+
+  <div class="w-52 mt-10 mx-auto">
+    <ion-button 
+      type="submit" 
+      expand="block" 
+      shape="round" 
+      class="ion-margin-bottom" 
+      [ngStyle]="{'min-height': '46px'}"
+      [disabled]="formGroup.invalid || login.status == 'loading' || (login$ | async)?.status == 'loading'"
+    >Submit</ion-button>
+  </div>
+</form>

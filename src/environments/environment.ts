@@ -2,8 +2,11 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+export const host = 'http://127.0.0.1:8300';
 export const environment = {
-  production: false
+  production: false,
+  host: host,
+  api: `${host}/api`,
 };
 
 /*

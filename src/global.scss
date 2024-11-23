@@ -35,3 +35,16 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+/**
+ * Custom CSS
+ * -----------------------------------------------------
+ * Put any of your custom CSS styles here. This is a great place to
+ * add your custom CSS and override Ionic's CSS variables.
+ * For example, you can change the CSS variable values set in the
+ * `variables.css` file, or add any custom styles that you'd like to apply
+ * to your app.
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

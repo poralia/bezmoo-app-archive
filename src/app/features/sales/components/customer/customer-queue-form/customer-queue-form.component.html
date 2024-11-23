@@ -1,0 +1,22 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmitHandler()">
+  <ion-input 
+    formControlName="license_plate" 
+    label="Nomor Plat Kendaraan"
+    labelPlacement="floating"
+    placeholder="Contoh: B 1234 ABC"
+    fill="outline"
+    class="mt-2"
+  ></ion-input>
+
+  <ion-button 
+    expand="block" 
+    color="success" 
+    class="mt-4 ion-no-margin"
+    type="submit"
+    mode="md"
+    size="large"
+    [disabled]="formGroup.invalid || creating"
+  >
+    {{ creating ? 'Memproses...' : 'Submit' }}
+  </ion-button>
+</form>

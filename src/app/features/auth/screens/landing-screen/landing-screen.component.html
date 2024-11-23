@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="false" class="ion-padding" [scrollY]="false">
+  <div class="h-full flex flex-col">
+    <div class="w-full text-center pt-24">
+      <ion-img src="assets/bezmoo-logo.png" alt="Bezmoo logo" class="w-64 mx-auto"></ion-img>
+      <ion-text class="uppercase text-neutral-500 text-xs tracking-widest">Best nya Cuci, Ahlinya Motor</ion-text>
+    </div>
+
+    <div class="mt-auto">
+      <div class="text-center w-40 mx-auto">
+        <ion-button 
+          shape="round" 
+          strong="true" 
+          expand="block" 
+          class="tracking-widest" 
+          [ngStyle]="{'min-height': '46px'}"
+          [routerLink]="['/auth/login']"
+        >Login</ion-button>
+      </div>
+
+      <div class="text-center w-64 mx-auto mt-3">
+        <ion-text class="text-sm italic text-neutral-500">daftar bila belum bergabung</ion-text>
+      </div>
+
+      <div class="text-center w-40 mx-auto">
+        <ion-button 
+          shape="round" 
+          strong="true" 
+          expand="block" 
+          fill="clear" 
+          class="tracking-widest" 
+          [ngStyle]="{'min-height': '46px'}"
+          [routerLink]="['/auth/register']"
+        >Daftar</ion-button>
+      </div>
+
+      <div class="text-center mt-4 p-3 border border-solid border-green-400 bg-green-50">
+        <ion-text class="text-sm text-neutral-600">
+          Minimaliasikendaraan Anda terkena goresan halus 
+          akibat mencuci dengan cara lap yang keliru
+        </ion-text>
+      </div>
+    </div>
+  </div>
+</ion-content>

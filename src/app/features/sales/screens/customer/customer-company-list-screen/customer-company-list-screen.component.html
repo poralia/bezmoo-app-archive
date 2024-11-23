@@ -1,0 +1,29 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/sales/customer"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Outlet Bezmoo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="company$ | async as company">
+    @if (company.status == 'loading') {
+      <div class="ion-padding text-center">
+        <ion-skeleton-text [animated]="true" class="w-full h-8"></ion-skeleton-text>
+      </div>
+    } @else if (company.status == 'success') {
+      <ion-list *ngIf="company.data.length > 0">
+        <ion-item *ngFor="let item of company.data">
+          <ion-icon slot="start" name="business-outline"></ion-icon>
+          <ion-label>
+            {{ item.company_name }}
+            <p *ngIf="item.company_description" [innerHTML]="item.company_description"></p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    }
+  </ng-container>
+</ion-content>

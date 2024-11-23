@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/sales/customer"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Ambil Antrian</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="{'camera-on': cameraOn}" [scrollY]="false">
+  <div class="flex flex-col h-full w-full">
+    <div [ngStyle]="{'height': scannerHeight + 'px'}" class="relative flex items-center justify-center">
+      <app-customer-scanner 
+        (onCameraOpened)="onCameraOpened($event)" 
+        (result)="onScanResult($event)"
+        [height]="scannerHeight + headerHeight"
+      ></app-customer-scanner>
+      
+      <ion-button *ngIf="!scannerRun || company" mode="ios" (click)="scan()">
+        <ion-icon name="camera-outline" slot="start"></ion-icon>
+        <ion-text>{{ company ? 'Scan Ulang' : 'Nyalakan Kamera' }}</ion-text>
+      </ion-button>
+    </div>
+
+    <ng-container *ngIf="company else insturctions">
+      <div class="ion-padding !pt-0 !px-6 bg-white w-full">
+        <h3 class="text-lg font-semibold block mb-2">Outlet: {{ company }}</h3>
+        <app-customer-queue-form [company]="company"></app-customer-queue-form>
+      </div>
+    </ng-container>
+  </div>
+</ion-content>
+
+<ng-template #insturctions>
+  <div class="ion-padding absolute bottom-0 left-0 right-0 bg-white !p-10" [ngStyle]="{'top': (scannerHeight) + 'px'}">
+    <ion-text class="text-lg block ion-text-center">Arahkan kamera ke QR Code yang terdapat di outlet.</ion-text>
+  </div>
+</ng-template>

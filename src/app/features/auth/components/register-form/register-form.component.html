@@ -1,0 +1,27 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmitHandler()" *ngIf="register$ | async as register">
+  <ion-item class="ion-margin-bottom">
+    <ion-icon slot="start" name="person-outline"></ion-icon>
+    <ion-input type="text" placeholder="Nama Lengkap" formControlName="full_name"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-icon slot="start" name="mail-outline"></ion-icon>
+    <ion-input type="email" placeholder="Alamat Email" formControlName="email"></ion-input>
+  </ion-item>
+
+  <ion-item class="ion-margin-bottom">
+    <ion-icon slot="start" name="key-outline"></ion-icon>
+    <ion-input type="password" placeholder="Password" formControlName="pwd"></ion-input>
+  </ion-item>
+
+  <div class="w-52 mt-10 mx-auto">
+    <ion-button 
+      type="submit" 
+      expand="block" 
+      shape="round" 
+      class="ion-margin-bottom" 
+      [ngStyle]="{'min-height': '46px'}"
+      [disabled]="formGroup.invalid || register.status == 'loading'"
+    >Submit</ion-button>
+  </div>
+</form>

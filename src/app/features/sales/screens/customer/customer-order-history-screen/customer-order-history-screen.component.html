@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/sales/customer"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Riwayat Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="salesOrder$ | async as salesOrder">
+    @if (salesOrder.status == 'loading') {
+      <div class="ion-padding text-center">
+        <ion-skeleton-text [animated]="true" class="w-full h-8"></ion-skeleton-text>
+      </div>
+    } @else if (salesOrder.status == 'success') {
+      <ion-list *ngIf="salesOrder.data.length > 0 else noData">
+        <ion-item mode="md" *ngFor="let order of salesOrder.data" [detail]="true" [button]="true" [routerLink]="['/sales/customer/history', order.name]">
+          <ion-label>
+            <h2>{{ order.name }}</h2>
+            <p class="!text-green-600">{{ order.creation | date }}  {{ order.status }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    } @else if (salesOrder.status == 'error') {
+      <ion-text color="danger" class="ion-text-center">Terjadi kesalahan.</ion-text>
+    }
+  </ng-container>
+</ion-content>
+
+<ng-template #noData>
+  <div class="ion-padding text-center">
+    <ion-text>Tidak ada data.</ion-text>
+  </div>
+</ng-template>

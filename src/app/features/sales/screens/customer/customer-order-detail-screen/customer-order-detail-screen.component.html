@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/sales/customer/history"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Rincian Pesanan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ng-container *ngIf="retrieveOrder$ | async as order">
+    @if (order.status == 'success') {
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="w-32">Pelanggan</td>
+            <td>{{ order.data.customer_name }}</td>
+          </tr>
+
+          <tr>
+            <td class="w-32">Order ID</td>
+            <td>{{ order.data.name }}</td>
+          </tr>
+
+          <tr>
+            <td class="w-32">Date</td>
+            <td>{{ order.data.creation | date }}</td>
+          </tr>
+
+          <tr>
+            <td class="w-32">Status</td>
+            <td>{{ order.data.status }}</td>
+          </tr>
+
+          <tr>
+            <td class="w-32">Outlet</td>
+            <td>{{ order.data.company }}</td>
+          </tr>
+
+          <tr>
+            <td class="w-32">Total Bayar</td>
+            <td>Rp {{ order.data.grand_total | number }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ion-list lines="none">
+        <ion-item-divider class="ion-no-padding">
+          <ion-label>
+            <h2>Items</h2>
+          </ion-label>
+        </ion-item-divider> 
+        <ion-item *ngFor="let item of order.data.items" class="ion-no-padding">
+          <ion-label>
+            <h2>{{ item.item_name }}</h2>
+            <p>{{ item.qty }} x Rp {{ item.price_list_rate | number }}</p>
+          </ion-label>
+          <ion-note slot="end" class="text-lg">Rp {{ item.amount | number }}</ion-note>
+        </ion-item>
+      </ion-list>
+    } @else if (order.status == 'loading') {
+      <div class="ion-padding text-center">
+        <ion-skeleton-text [animated]="true" class="w-full h-8"></ion-skeleton-text>
+      </div>
+    } @else if (order.status == 'error') {
+      <ion-text color="danger" class="ion-text-center">Terjadi kesalahan.</ion-text>
+    }
+  </ng-container>
+</ion-content>

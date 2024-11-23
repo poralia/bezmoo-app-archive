@@ -1,0 +1,23 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/auth"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false" class="ion-padding" [scrollY]="false">
+  <div class="h-full flex flex-col">
+    <div class="w-full text-center pt-8">
+      <ion-img src="assets/bezmoo-logo.png" alt="Bezmoo logo" class="w-64 mx-auto"></ion-img>
+      <ion-text class="uppercase text-neutral-500 text-xs tracking-widest">Best nya Cuci, Ahlinya Motor</ion-text>
+    </div>
+
+    <div class="mt-6 mx-4 ion-padding">
+      <div class="text-center mb-6">
+        <ion-text class="text-lg text-center uppercase text-neutral-600 tracking-widest">Buat Akun Baru</ion-text>
+      </div>
+      <app-register-form></app-register-form>
+    </div>
+  </div>
+</ion-content>
